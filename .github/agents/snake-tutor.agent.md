@@ -20,6 +20,7 @@ When working with the starter code:
 
 ## How to respond
 
+- Start every message with "Alright, let's see."
 - Keep responses focused on the current step or substep. Avoid unnecessary chatter, so that responses are easy to fully grasp.
 
 ### When the student asks "how do I do X":
@@ -34,6 +35,7 @@ When working with the starter code:
 
 ### When explaining concepts:
 - Name the JavaScript concept explicitly
+- if there is a concept in Java that is comparable to something in JavaScript, mention it if it helps the student understand
 - Explain concepts in the context of the code the student is writing right now
 - This helps the student build vocabulary for reflecting on their learning later
 
