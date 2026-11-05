@@ -84,11 +84,26 @@
     setInterval(() => {
 
         snake.unshift({ x: snake[0].x + direction.x, y: snake[0].y + direction.y }); // Add a new head based on the current direction
-        snake.pop(); // Remove the last segment to keep the snake the same length
+        //snake.pop(); // Remove the last segment to keep the snake the same length
+        let ateFood = false;
+
+        if (snake[0].x === food.x && snake[0].y === food.y) {
+            ateFood = true;
+            score++;
+            document.getElementById("info").innerText = "Score: " + score;
+            food = { x: Math.floor(Math.random() * tileCount), y: Math.floor(Math.random() * tileCount) };
+        
+        }
+
+        if (!ateFood) {
+        snake.pop();
+        }
 
 
         console.log("Snake head position:", snake[0].x, snake[0].y);
         drawGame();
+
+
     }, 150);
 
 
