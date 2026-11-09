@@ -8,6 +8,19 @@
         canvas {
             border: 1px solid black;
         }
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+font-family: Impact, sans-serif;        font-size: 2.25rem;
+        font-weight: 700;
+        }
+
     </style>
 </head>
 <body>
@@ -15,6 +28,7 @@
     <h1>Snake</h1>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     <button id="restartButton" type="button">Restart game</button>
+    <p id="highScore"></p>
     <p id="info"></p>
 
     <script>
@@ -24,6 +38,9 @@
         const ctx = canvas.getContext("2d");
         const gridSize = 20;
         const tileCount = canvas.width / gridSize;
+
+                    document.getElementById("info").innerText = "Score: 0";
+
 
         // ===== INITIAL STATE =====
         let snake = [
@@ -69,6 +86,10 @@
 
 
         let score = 0;
+
+        let highScore = Number(localStorage.getItem("snakeHighScore")) || 0;
+        const highScoreDisplay = document.getElementById("highScore");
+        highScoreDisplay.innerText = "High score: " + highScore;
 
         // ===== DRAWING =====
         const drawGame = () => {
@@ -161,6 +182,11 @@
 
         if (ateFood) {
             score++;
+            if (score > highScore) {
+    highScore = score;
+    localStorage.setItem("snakeHighScore", highScore);
+    highScoreDisplay.innerText = "High score: " + highScore;
+}
             document.getElementById("info").innerText = "Score: " + score;
 
             food = createFood();
